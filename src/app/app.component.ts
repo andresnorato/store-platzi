@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -29,5 +30,18 @@ export class AppComponent {
   increaseage(){
     this.person.age += 1;
   }
+
+
+  onScroll(event: Event){
+    const element = event.target as HTMLElement;
+    console.log(element.scrollTop)
+  }
+
+  changeName(event: Event){
+    const element = event.target as  HTMLInputElement;
+    this.person.name = element.value;
+    console.log( element.value);
+  }
+
 
 }
