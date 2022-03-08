@@ -1,3 +1,19 @@
+<h1>NgFor Objs</h1>
+<div>
+  <div *ngFor="let product of products" >
+    <img [src]="product.image" alt="" width="120px" >
+    <h2>{{product.price}}</h2>
+    <p>{{product.name}}</p>
+  </div>
+</div>
+
+
+<h1>Ng For</h1>
+<p>Lista de Nombres</p>
+<ul>
+  <li *ngFor="let name of names">{{name}}</li>
+</ul>
+
 <h1>Ng if</h1>
 <input type="text" required  [(ngModel)]="person.name">
 <input type="number" required  [(ngModel)]="person.age">

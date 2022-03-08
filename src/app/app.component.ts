@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { Product } from './product.model';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +10,41 @@ import { Component } from '@angular/core';
 export class AppComponent {
   nameNg ='juans';
 
+  names: String[] = ['Andres', 'Camilo', 'Julian']
 
-  names = ['Andres', 'Camilo', 'Julian']
-
+  products: Product[] = [
+    {
+      name: 'EL mejor juguete',
+      price: 565,
+      image: 'http://placeimg.com/640/480',
+      category: 'all',
+    },
+    {
+      name: 'Bicicleta casi nueva',
+      price: 356,
+      image: ''
+    },
+    {
+      name: 'Colleción de albumnes',
+      price: 34,
+      image: 'http://placeimg.com/640/480'
+    },
+    {
+      name: 'Mis libros',
+      price: 23,
+      image: 'http://placeimg.com/640/480'
+    },
+    {
+      name: 'Casa para perro',
+      price: 34,
+      image: 'http://placeimg.com/640/480'
+    },
+    {
+      name: 'Gafas',
+      price: 3434,
+      image: 'http://placeimg.com/640/480'
+    }
+  ]
 
 
 
