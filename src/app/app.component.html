@@ -1,9 +1,21 @@
+<h1>Ng if</h1>
+<input type="text" required  [(ngModel)]="person.name">
+<input type="number" required  [(ngModel)]="person.age">
+
+<p *ngIf="person.name === 'Andres'">My Andres</p>
+<p *ngIf="person.name === 'Camilo' && person.age === 18; else myblock">My Andres</p>
+<ng-template  #myblock >
+  <p>No Camilo</p>
+</ng-template>
+
+
+
 <h1>NgModel</h1>
 <p>Nombre {{ person.name }}</p>
 <input
   type="text"
   [required]="true"
-  #nameInput="ngModel"
+  #nameInput="ngModel"q
   [(ngModel)]="person.name"
 />
 <p>Valid: {{ nameInput.valid }}</p>
@@ -11,12 +23,13 @@
 <p>Age {{ person.age }}</p>
 <input
   width="250px"
-  type="number"
+  type="text"
   #ageInput="ngModel"
   [value]="person.age"
   [(ngModel)]="person.age"
   [max]="18"
   [min]="10"
+  minlength="10"
   [required]="true"
 />
 <p *ngIf="ageInput.valid">Los datos son correctos</p>

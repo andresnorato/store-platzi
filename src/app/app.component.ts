@@ -8,6 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   nameNg ='juans';
 
+
+  names = ['Andres', 'Camilo', 'Julian']
+
+
+
+
   name = 'Andres';
   age = 18;
   img =
@@ -17,7 +23,7 @@ export class AppComponent {
 
   person = {
     name: 'Andres G',
-    age: 12,
+    age: 18,
     avatar:
       'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',
   }
