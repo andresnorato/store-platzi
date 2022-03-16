@@ -1,3 +1,35 @@
+<h1>NgClass & NgStyle</h1>
+<input type="text" required  #nameInput5="ngModel" [(ngModel)]="person.name">
+<p [ngClass]="{
+  'valid': nameInput5.valid,
+  'invalid': nameInput5.invalid && nameInput5.touched
+}">
+  El campo es requerido
+</p>
+
+<div class="styles">
+  <div>
+  <input type="number" [(ngModel)]="box.width">
+  <input type="number" [(ngModel)]="box.height">
+  <input type="color" [(ngModel)]="box.background">
+  </div>
+  <div
+    [ngStyle]="{
+      'width.px':box.width,
+      'height.px':box.height,
+      'background': box.background,
+      'display': 'block'
+    }"
+  >
+
+  </div>
+</div>
+
+
+<!--
+//Puedo agragr una clase con class. dependiendo el condicioanl
+//Puedo darle un estilo en especifico directamente en el HTML
+-->
 <h1>Class & Style</h1>
 <input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name" />
 <p class="message-error" [class.valid]="nameInput3.valid">

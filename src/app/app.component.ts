@@ -16,6 +16,13 @@ export class AppComponent {
 
   names: String[] = ['Andres', 'Camilo', 'Julian']
 
+  box = {
+    width: 10,
+    height: 50,
+    background: 'red'
+  }
+
+
   products: Product[] = [
     {
       name: 'EL mejor juguete',

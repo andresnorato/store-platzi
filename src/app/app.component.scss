@@ -5,17 +5,27 @@
   background: red;
 }
 
-.message-error {
-  background-color: red;
+
+.message-errorr {
+  color: red;
+  &.invalid{
+    display: none;
+  }
 }
+
 
 .styles {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 }
 
+.invalid {
+  color: red;
+  background-color: red;
+}
+
 .valid {
-  color: white;
+  background-color: green;
   border-radius: green;
 }
 
