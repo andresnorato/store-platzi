@@ -5,9 +5,13 @@ import { Product } from './product.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+
+
+
+  widthImg = 10;
   nameNg ='juans';
 
   names: String[] = ['Andres', 'Camilo', 'Julian']
@@ -22,7 +26,7 @@ export class AppComponent {
     {
       name: 'Bicicleta casi nueva',
       price: 356,
-      image: ''
+      image: 'http://placeimg.com/640/480'
     },
     {
       name: 'Colleción de albumnes',
@@ -56,7 +60,7 @@ export class AppComponent {
   buttondisabled = true;
 
   person = {
-    name: 'Andres G',
+    name: '',
     age: 18,
     avatar:
       'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',

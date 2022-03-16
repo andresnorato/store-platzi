@@ -1,37 +1,61 @@
-<h1>NgFor Objs</h1>
-<div>
-  <div *ngFor="let product of products" >
-    <img [src]="product.image" alt="" width="120px" >
-    <h2>{{product.price}}</h2>
-    <p>{{product.name}}</p>
+<h1>Class & Style</h1>
+<input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name" />
+<p class="message-error" [class.valid]="nameInput3.valid">
+  Nice
+</p>
+
+
+<div class="styles" >
+  <div>
+    <input type="text" [(ngModel)]="widthImg">
+  </div>
+  <div>
+    <img [style.width.px]="widthImg"  [src]="person.avatar" alt="">
   </div>
 </div>
 
 
+
+
+
+<label>Nombre</label>
+<input type="text" requerid #nameInput4="ngModel" [(ngModel)]="person.name">
+<p [style.font-style]="nameInput3.invalid ? 'italic': 'normal'" >Texto texto texto</p>
+<hr>
+<h1>NgFor Objs</h1>
+<div class="products--grid">
+  <div *ngFor="let product of products">
+    <img [src]="product.image" alt="" />
+    <h2>{{ product.price }}</h2>
+    <p>{{ product.name }}</p>
+  </div>
+</div>
+
 <h1>Ng For</h1>
 <p>Lista de Nombres</p>
 <ul>
-  <li *ngFor="let name of names">{{name}}</li>
+  <li *ngFor="let name of names">{{ name }}</li>
 </ul>
 
 <h1>Ng if</h1>
-<input type="text" required  [(ngModel)]="person.name">
-<input type="number" required  [(ngModel)]="person.age">
+<input type="text" required [(ngModel)]="person.name" />
+<input type="number" required [(ngModel)]="person.age" />
 
 <p *ngIf="person.name === 'Andres'">My Andres</p>
-<p *ngIf="person.name === 'Camilo' && person.age === 18; else myblock">My Andres</p>
-<ng-template  #myblock >
+<p *ngIf="person.name === 'Camilo' && person.age === 18; else myblock">
+  My Andres
+</p>
+<ng-template #myblock>
   <p>No Camilo</p>
 </ng-template>
-
-
 
 <h1>NgModel</h1>
 <p>Nombre {{ person.name }}</p>
 <input
   type="text"
   [required]="true"
-  #nameInput="ngModel"q
+  #nameInput="ngModel"
+  q
   [(ngModel)]="person.name"
 />
 <p>Valid: {{ nameInput.valid }}</p>
@@ -72,7 +96,7 @@
 <!-- Lellendo el valor de un input cuando tecleamos-->
 <input type="text" [value]="person.name" (keyup)="changeName($event)" />
 
-<h1>Propiedades</h1>
+<!-- <h1>Propiedades</h1>
 <button [disabled]="buttondisabled">Enviar</button>
 <input type="text" [value]="person.name" />
 <progress max="100" [value]="person.age"></progress>
@@ -83,4 +107,4 @@
 <h2>{{ "Hola mundo".repeat(5) }}</h2>
 <p>3 + 3 = {{ 3 + 3 }}</p>
 <h3>Hola soy, {{ name }} y tengo {{ age }}</h3>
-<img src="{{ img }}" alt="imagen" />
+<img src="{{ img }}" alt="imagen" /> -->
