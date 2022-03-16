@@ -9,6 +9,11 @@ import { Product } from './product.model';
 })
 export class AppComponent {
 
+  register = {
+    name: '',
+    email: '',
+    password: ''
+  }
 
 
   widthImg = 10;
@@ -95,5 +100,8 @@ export class AppComponent {
     console.log( element.value);
   }
 
+  onRegister(){
+    console.log(this.register)
+  }
 
 }
