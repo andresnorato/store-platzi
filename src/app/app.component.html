@@ -1,4 +1,47 @@
-<h1>
+<app-product *ngFor="let product of products" [product]="product"  ></app-product>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <h1>
   <form (ngSubmit)="onRegister()"  #myForm = "ngForm">
     <div class="input-group">
       <label for="name">Name</label>
@@ -48,10 +91,11 @@
   ></div>
 </div>
 
-<!--
-//Puedo agragr una clase con class. dependiendo el condicioanl
+ -->
+<!-- //Puedo agragr una clase con class. dependiendo el condicioanl
 //Puedo darle un estilo en especifico directamente en el HTML
 -->
+<!--
 <h1>Class & Style</h1>
 <input type="text" required #nameInput3="ngModel" [(ngModel)]="person.name" />
 <p class="message-error" [class.valid]="nameInput3.valid">Nice</p>
@@ -141,9 +185,9 @@
     deserunt doloribus itaque, consectetur vitae facilis nam, enim alias illo
     sint, possimus ipsum?
   </p>
-</div>
+</div> -->
 <!-- Lellendo el valor de un input cuando tecleamos-->
-<input type="text" [value]="person.name" (keyup)="changeName($event)" />
+<!-- <input type="text" [value]="person.name" (keyup)="changeName($event)" /> -->
 
 <!-- <h1>Propiedades</h1>
 <button [disabled]="buttondisabled">Enviar</button>

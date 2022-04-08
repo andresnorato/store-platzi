@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-
-import { Product } from './product.model';
+import { Product } from './models/product.model';
 
 @Component({
   selector: 'app-root',
@@ -8,100 +7,124 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
-  register = {
-    name: '',
-    email: '',
-    password: ''
-  }
-
-
-  widthImg = 10;
-  nameNg ='juans';
-
-  names: String[] = ['Andres', 'Camilo', 'Julian']
-
-  box = {
-    width: 10,
-    height: 50,
-    background: 'red'
-  }
-
+  imgParent = '';
 
   products: Product[] = [
     {
+      id: '1',
       name: 'EL mejor juguete',
       price: 565,
-      image: 'http://placeimg.com/640/480',
-      category: 'all',
+      image: '../assets/images/toy.jpg',
     },
     {
+      id: '2',
       name: 'Bicicleta casi nueva',
       price: 356,
-      image: 'http://placeimg.com/640/480'
+      image: '../assets/images/bike.jpg',
     },
     {
+      id: '3',
       name: 'Colleción de albumnes',
       price: 34,
-      image: 'http://placeimg.com/640/480'
+      image: '../assets/images/album.jpg',
     },
     {
+      id: '4',
       name: 'Mis libros',
       price: 23,
-      image: 'http://placeimg.com/640/480'
+      image: '../assets/images/books.jpg',
     },
-    {
-      name: 'Casa para perro',
-      price: 34,
-      image: 'http://placeimg.com/640/480'
-    },
-    {
-      name: 'Gafas',
-      price: 3434,
-      image: 'http://placeimg.com/640/480'
-    }
-  ]
+  ];
 
-
-
-  name = 'Andres';
-  age = 18;
-  img =
-    'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg';
-
-  buttondisabled = true;
-
-  person = {
-    name: '',
-    age: 18,
-    avatar:
-      'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',
+  onLoaded(img: string) {
+    console.log(img);
   }
 
+  // register = {
+  //   name: '',
+  //   email: '',
+  //   password: ''
+  // }
 
-  toggleButton(){
-    this.buttondisabled = !this.buttondisabled;
-  }
+  // widthImg = 10;
+  // nameNg ='juans';
 
+  // names: String[] = ['Andres', 'Camilo', 'Julian']
 
-  increaseage(){
-    this.person.age += 1;
-  }
+  // box = {
+  //   width: 10,
+  //   height: 50,
+  //   background: 'red'
+  // }
 
+  // products: Product[] = [
+  //   {
+  //     name: 'EL mejor juguete',
+  //     price: 565,
+  //     image: 'http://placeimg.com/640/480',
+  //     category: 'all',
+  //   },
+  //   {
+  //     name: 'Bicicleta casi nueva',
+  //     price: 356,
+  //     image: 'http://placeimg.com/640/480'
+  //   },
+  //   {
+  //     name: 'Colleción de albumnes',
+  //     price: 34,
+  //     image: 'http://placeimg.com/640/480'
+  //   },
+  //   {
+  //     name: 'Mis libros',
+  //     price: 23,
+  //     image: 'http://placeimg.com/640/480'
+  //   },
+  //   {
+  //     name: 'Casa para perro',
+  //     price: 34,
+  //     image: 'http://placeimg.com/640/480'
+  //   },
+  //   {
+  //     name: 'Gafas',
+  //     price: 3434,
+  //     image: 'http://placeimg.com/640/480'
+  //   }
+  // ]
 
-  onScroll(event: Event){
-    const element = event.target as HTMLElement;
-    console.log(element.scrollTop)
-  }
+  // name = 'Andres';
+  // age = 18;
+  // img =
+  //   'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg';
 
-  changeName(event: Event){
-    const element = event.target as  HTMLInputElement;
-    this.person.name = element.value;
-    console.log( element.value);
-  }
+  // buttondisabled = true;
 
-  onRegister(){
-    console.log(this.register)
-  }
+  // person = {
+  //   name: '',
+  //   age: 18,
+  //   avatar:
+  //     'https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_960_720.jpg',
+  // }
 
+  // toggleButton(){
+  //   this.buttondisabled = !this.buttondisabled;
+  // }
+
+  // increaseage(){
+  //   this.person.age += 1;
+  // }
+
+  // onScroll(event: Event){
+  //   const element = event.target as HTMLElement;
+  //   console.log(element.scrollTop)
+  // }
+
+  // changeName(event: Event){
+  //   const element = event.target as  HTMLInputElement;
+  //   this.person.name = element.value;
+  //   console.log( element.value);
+  // }
+
+  // onRegister(){
+  //   console.log(this.register)
+  // }
 }
