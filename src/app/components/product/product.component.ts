@@ -15,12 +15,6 @@ export class ProductComponent implements OnInit {
     name: ''
   }
 
-  // product: Product = {
-  //   id: '1',
-  //   name: 'Producto 1',
-  //   image: '../../../assets/images/toy.jpg',
-  //   price: 200,
-  // }
 
 
   constructor() { }
