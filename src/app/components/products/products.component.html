@@ -1,10 +1,12 @@
-<p>
-  La cantidad {{myshoppingCart.length}}
-</p>
+<p>La cantidad {{ myshoppingCart.length }}</p>
 
-<p>
-  Toatl ${{total}}
-</p>
+<p>Toatl ${{ total }}</p>
+
+{{ "hola" | transforNumber }}
+
+<!-- Today {{date | date: 'shortDate' }} -->
+
+<!-- TimeAge {{date | timeAgo}} -->
 
 <div class="products--grid">
   <app-product
