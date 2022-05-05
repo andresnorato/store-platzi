@@ -9,10 +9,11 @@ import { NavComponent } from './components/nav/nav.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
-import { TransforNumberPipe } from './pipes/transfor-number.pipe'
+import { TransforNumberPipe } from './pipes/transfor-number.pipe';
+import { HighlightDirective } from './directives/highlight.directive'
 
 @NgModule({
-  declarations: [AppComponent, ImgComponent, ProductComponent, ProductsComponent, NavComponent, ReversePipe, TimeAgoPipe, TransforNumberPipe],
+  declarations: [AppComponent, ImgComponent, ProductComponent, ProductsComponent, NavComponent, ReversePipe, TimeAgoPipe, TransforNumberPipe, HighlightDirective],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
