@@ -6,15 +6,26 @@ import { ImgComponent } from './components/img/img.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NavComponent } from './components/nav/nav.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { TransforNumberPipe } from './pipes/transfor-number.pipe';
-import { HighlightDirective } from './directives/highlight.directive'
+import { HighlightDirective } from './directives/highlight.directive';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
-  declarations: [AppComponent, ImgComponent, ProductComponent, ProductsComponent, NavComponent, ReversePipe, TimeAgoPipe, TransforNumberPipe, HighlightDirective],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    ImgComponent,
+    ProductComponent,
+    ProductsComponent,
+    NavComponent,
+    ReversePipe,
+    TimeAgoPipe,
+    TransforNumberPipe,
+    HighlightDirective,
+  ],
+  imports: [BrowserModule, FormsModule, HttpClientModule, SwiperModule],
   providers: [],
   bootstrap: [AppComponent],
 })
