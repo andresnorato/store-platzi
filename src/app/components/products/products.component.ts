@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
+import { SwiperComponent } from 'swiper/angular';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -48,11 +50,49 @@ export class ProductsComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
+    this.productsService.getProductDetail(id).subscribe((dta) => {
+      this.toggleProductDetail();
+      this.productChoosen = dta;
+    });
+  }
+
+  @ViewChild('swiper', { static: false })
+  swiper!: SwiperComponent;
+  slideNext() {
+    this.swiper.swiperRef.slideNext(100);
+  }
+  slidePrev() {
+    this.swiper.swiperRef.slidePrev(100);
+  }
+
+  createNewProduct() {
     this.productsService
-      .getProductDetail(id)
-      .subscribe((dta) => {
-        this.toggleProductDetail();
-        this.productChoosen = dta;
+      .create({
+        price: 18000,
+        images: [],
+        title: 'Hola que hace',
+        description: 'que más bebe',
+        categoryId: 2,
+      })
+      .subscribe((data) => {
+        console.log('created', data);
+        this.products.unshift(data);
+      });
+  }
+
+  updateProduct(id: string) {
+    this.productsService
+      .update(id, {
+        title: 'Hola que hace',
+        description: 'que más bebe',
+        categoryId: 2,
+      })
+      .subscribe((data) => {
+        const productIndex = this.products.findIndex(
+          (item) => item.id === this.productChoosen.id
+        );
+        this.products[productIndex] = data;
+        this.productChoosen = data;
       });
   }
 }
