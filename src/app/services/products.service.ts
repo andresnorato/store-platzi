@@ -3,7 +3,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   CreateProductDTO,
   Product,
-  UpdateProductDTO,
 } from '../models/product.model';
 import { retry, retryWhen } from 'rxjs/operators';
 @Injectable({
@@ -27,7 +26,7 @@ export class ProductsService {
   }
 
   getProductDetail(id: string) {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+    return this.http.get<Product>(`${this.apiUrl}/${id}`)
   }
 
   // getProductsByPage() {
