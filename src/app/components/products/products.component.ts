@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
+import { zip } from 'rxjs';
+
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
@@ -65,6 +68,25 @@ export class ProductsComponent implements OnInit {
         this.statusDetail = 'error';
       }
     );
+  }
+
+  readAndUpdate(id: string) {
+    this.productsService
+      .getProductDetail(id)
+      .pipe(
+        switchMap((product) => this.productsService.update(product.id, { title: 'Change' })
+        )
+      )
+      .subscribe(rtaUpdate => {
+        console.log(rtaUpdate);
+      });
+
+      this.productsService.fetchReadAndUp0date("1", {title: 'Juan'})
+      .subscribe(response =>{
+        const read = response[0];
+        const update = response[1];
+      })
+
   }
 
   @ViewChild('swiper', { static: false })

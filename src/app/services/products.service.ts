@@ -5,9 +5,9 @@ import {
   HttpParams,
   HttpStatusCode,
 } from '@angular/common/http';
-import { CreateProductDTO, Product } from '../models/product.model';
+import { CreateProductDTO, Product, UpdateProductDTO } from '../models/product.model';
 import { retry, catchError, map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { throwError, zip } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -29,10 +29,17 @@ export class ProductsService {
         products.map((item) => {
           return {
             ...item,
-            taxes: .19 * item.price,
+            taxes: 0.19 * item.price,
           };
         })
       )
+    );
+  }
+
+  fetchReadAndUp0date(id: string, dto: UpdateProductDTO){
+    return zip (
+      this.getProductDetail(id),
+      this.update(id, dto)
     );
   }
 
@@ -53,12 +60,6 @@ export class ProductsService {
     );
   }
 
-  // getProductsByPage() {
-  //   return this.http.get<Product[]>(`${this.apiUrl}`, {
-  //     params: { limit, offset },
-  //   });
-  // }
-
   create(dto: CreateProductDTO) {
     return this.http.post<Product>(this.apiUrl, dto);
   }
@@ -71,3 +72,9 @@ export class ProductsService {
     return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
   }
 }
+
+// getProductsByPage() {
+//   return this.http.get<Product[]>(`${this.apiUrl}`, {
+//     params: { limit, offset },
+//   });
+// }
