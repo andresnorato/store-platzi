@@ -1,6 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { switchMap } from 'rxjs/operators';
-import { zip } from 'rxjs';
 
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
@@ -12,10 +17,12 @@ import { SwiperComponent } from 'swiper/angular';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent {
   total = 0;
   myshoppingCart: Product[] = [];
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+  @Output() onloadMore = new EventEmitter<string>();
+
   date = new Date('2021 2, 30');
   showProductDetail: boolean = false;
   productChoosen: Product = {
@@ -29,8 +36,7 @@ export class ProductsComponent implements OnInit {
     },
     description: '',
   };
-  limit = 10;
-  offset = 0;
+
   statusDetail: 'loading' | 'succes' | 'error' | 'init' = 'init';
 
   constructor(
@@ -38,12 +44,6 @@ export class ProductsComponent implements OnInit {
     private productsService: ProductsService
   ) {
     this.myshoppingCart = this.storeService.getShoppingCart();
-  }
-
-  ngOnInit(): void {
-    this.productsService.getAllProducts(10, 0).subscribe((data) => {
-      this.products = data;
-    });
   }
 
   onAddtoShoppingCart(product: Product) {
@@ -74,19 +74,20 @@ export class ProductsComponent implements OnInit {
     this.productsService
       .getProductDetail(id)
       .pipe(
-        switchMap((product) => this.productsService.update(product.id, { title: 'Change' })
+        switchMap((product) =>
+          this.productsService.update(product.id, { title: 'Change' })
         )
       )
-      .subscribe(rtaUpdate => {
+      .subscribe((rtaUpdate) => {
         console.log(rtaUpdate);
       });
 
-      this.productsService.fetchReadAndUp0date("1", {title: 'Juan'})
-      .subscribe(response =>{
+    this.productsService
+      .fetchReadAndUp0date('1', { title: 'Juan' })
+      .subscribe((response) => {
         const read = response[0];
         const update = response[1];
-      })
-
+      });
   }
 
   @ViewChild('swiper', { static: false })
@@ -139,12 +140,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  // loadMore() {
-  //   this.productsService
-  //     .getAllProducts(this.limit, this.offset)
-  //     .subscribe((data) => {
-  //       this.products = this.products.concat(data);
-  //       this.offset += this.limit;
-  //     });
-  // }
+  loadMore() {
+    this.onloadMore.emit();
+  }
 }
