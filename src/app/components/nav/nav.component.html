@@ -33,8 +33,13 @@
       </ul>
     </nav>
     <div class="info">
-      <div class="account">carnorat@gmail.com</div>
-      <div class="cart" >
+      <div class="account">
+        <button *ngIf="!profile; else elseBlock" (click)="loginAndGet()">
+          Login
+        </button>
+        <ng-template #elseBlock>{{ profile?.email }}</ng-template>
+      </div>
+      <div class="cart">
         <a href="">
           <img src="./assets/svg/icon_shopping_cart.svg" alt="logo" />
         </a>

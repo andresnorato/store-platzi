@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './models/product.model';
+import {AuthService} from './services/auth.service'
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,24 @@ import { Product } from './models/product.model';
 })
 export class AppComponent {
   imgParent = '';
+  token: string = '';
 
 
+  constructor(
+  ){
+
+  }
 
   onLoaded(img: string) {
     console.log(img);
   }
+
+
+
+
+
+
+
 
   // register = {
   //   name: '',
