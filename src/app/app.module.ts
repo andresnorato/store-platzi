@@ -23,6 +23,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ProductDatailComponent } from './pages/product-datail/product-datail.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
     RegisterComponent,
     RecoveryComponent,
     ProfileComponent,
+    ProductDatailComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule, SwiperModule, AppRoutingModule],
   providers: [

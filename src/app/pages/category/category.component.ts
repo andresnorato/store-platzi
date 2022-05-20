@@ -6,21 +6,21 @@ import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-category',
-  template: `<app-products [products]="products"></app-products>`,
+  template: `<app-products [products]="products" [productId]="productId"></app-products>`,
   styleUrls: ['./category.component.css'],
 })
 export class CategoryComponent implements OnInit {
   categoryId: string | null = null;
-
+  productId: string | null = null;
   products: Product[] = [];
 
   constructor(
-    private route: ActivatedRoute,
+    private activatedRouteute: ActivatedRoute,
     private productsService: ProductsService
   ) {}
 
   ngOnInit(): void {
-    this.route.paramMap
+    this.activatedRouteute.paramMap
       .pipe(
         switchMap((params) => {
           this.categoryId = params.get('id');
@@ -33,5 +33,9 @@ export class CategoryComponent implements OnInit {
       .subscribe((data) => {
         this.products = data;
       });
+      this.activatedRouteute.queryParamMap.subscribe(paramas =>{
+        this.productId = paramas.get('product')
+        console.log(this.productId)
+      })
   }
 }

@@ -21,6 +21,14 @@ export class ProductsComponent {
   total = 0;
   myshoppingCart: Product[] = [];
   @Input() products: Product[] = [];
+  // @Input() productId: string | null = null;
+  @Input()
+  set productId(id: string | null) {
+    if (id) {
+      this.onShowDetail(id);
+    }
+  }
+
   @Output() onloadMore = new EventEmitter<string>();
 
   date = new Date('2021 2, 30');
@@ -57,9 +65,12 @@ export class ProductsComponent {
 
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
+    if (!this.showProductDetail) {
+      this.showProductDetail = true;
+    }
+    // this.toggleProductDetail();
     this.productsService.getProductDetail(id).subscribe(
       (dta) => {
-        this.toggleProductDetail();
         this.productChoosen = dta;
         this.statusDetail = 'succes';
       },
