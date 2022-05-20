@@ -8,7 +8,7 @@ import { ProductsService } from 'src/app/services/products.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  limit = 10;
+  limit = 5;
   offset = 0;
   products: Product[] = [];
 
