@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 @NgModule({
@@ -25,6 +26,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
       useClass: TimeInterceptor,
       multi: true,
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
