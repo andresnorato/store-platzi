@@ -10,6 +10,7 @@ import { TokenService } from './token.service';
 })
 export class AuthService {
   private apiUrl = 'https://young-sands-07814.herokuapp.com/api/auth';
+
   private user = new BehaviorSubject<User | null>(null);
   $user = this.user.asObservable();
 
@@ -17,9 +18,7 @@ export class AuthService {
 
   login(email: string, password: string) {
     return this.http.post<Auth>(`${this.apiUrl}/login`, { email, password }).pipe(
-      tap(response => {
-        this.tokenService.seveToken(response.access_token)
-      })
+      tap(response =>  this.tokenService.seveToken(response.access_token))
     )
   }
 
@@ -35,11 +34,15 @@ export class AuthService {
   getProfile() {
     return this.http
       .get<User>(`${this.apiUrl}/profile`)
-      .pipe(tap((user) => this.user.next(user)));
+      .pipe(
+        tap(user => this.user.next(user))
+      )
   }
 
   loginAndGet(email: string, password: string) {
-    return this.login(email, password).pipe(switchMap(() => this.getProfile()));
+    return this.login(email, password).pipe(
+      switchMap(() => this.getProfile())
+      );
   }
 
 

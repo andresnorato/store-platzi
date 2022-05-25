@@ -1,32 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from './models/product.model';
-import {AuthService} from './services/auth.service'
+import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   imgParent = '';
   token: string = '';
 
+  ngOnInit() {
+    const token = this.tokenService.getToken();
+    if (token) {
+      this.authService.getProfile().subscribe();
+    }
+  }
 
   constructor(
-  ){
-
-  }
-
-  onLoaded(img: string) {
-    console.log(img);
-  }
-
-
-
-
-
-
-
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) {}
 
   // register = {
   //   name: '',
